@@ -67,7 +67,7 @@ jobs:
           message: Edited markdown files with reading times.
           push: false
 
-      # Allow GitHub Actions to create pull-request from settings in your repository
+      # !! Allow GitHub Actions to create pull-request from settings in your repository
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v4
         with:
