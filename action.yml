@@ -1,8 +1,8 @@
-name: Reading Time
+name: Reading Time Action
 description: Calculate reading time of the md files in the repository.
 inputs:
   strategy:
-    description: Select which files to update with reading time (all, paths, readme)
+    description: Select strategy to update your markdown files (all, paths, readme)
     required: false
     default: readme
   paths:
