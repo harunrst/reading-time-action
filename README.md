@@ -4,7 +4,7 @@
 
 <a href="https://github.com/harunrst/reading-time-action/actions"><img alt="typescript-action status" src="https://github.com/harunrst/reading-time-action/workflows/build-test/badge.svg"></a>
 
-The GitHub Action calculates medium-like reading times of markdown files in your repository and inserts them to the top of your markdown files.
+Reading time action calculates medium-like reading times of markdown files in your repository and inserts them to the top of your markdown files.
 
 ![](./assets/example.jpg)
 
