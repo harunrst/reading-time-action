@@ -1,5 +1,6 @@
-name: Reading Time Action
-description: Calculate reading time of the markdown files and prepends it.
+name: Reading Time
+description: Reading time action calculates medium-like reading times of markdown files in your repository and inserts them to the top of your markdown files.
+author: harunrst
 inputs:
   strategy:
     description: Select strategy to update your markdown files (all, paths, readme)
