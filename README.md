@@ -1,105 +1,91 @@
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
+# GitHub Action to Calculate & Insert Reading Time
 
-# Create a JavaScript Action using TypeScript
+<a href="https://github.com/harunrst/reading-time-action/actions"><img alt="typescript-action status" src="https://github.com/harunrst/reading-time-action/workflows/build-test/badge.svg"></a>
 
-Use this template to bootstrap the creation of a TypeScript action.:rocket:
+The GitHub Action calculates medium-like reading times of markdown files in your repository and inserts them to the top of your markdown files.
 
-This template includes compilation support, tests, a validation workflow, publishing, and versioning guidance.  
+![](./assets/example.jpg)
 
-If you are new, there's also a simpler introduction.  See the [Hello World JavaScript Action](https://github.com/actions/hello-world-javascript-action)
+Moreover;
 
-## Create an action from this template
+- Pick your calculation strategy: only readme file, specific paths, and all markdown files.
+- Pick your style: regular/bold text, align it to left/center/right.
+- Merge and run as you wish;
+  - Run on push / manually: get auto-generated PR to your markdown files or push to your branch.
+  - Run on pull-request: update your pull request with calculated times.
+  - Or do whatever you wish to do with the updated markdowns :)
 
-Click the `Use this Template` and provide the new repo details for your action
+## Usage
 
-## Code in Main
+All examples below are triggered only when you make a change on a markdown file. To trigger for the first time, I suggest you run manually using `workflow_dispatch`
 
-> First, you'll need to have a reasonably modern version of `node` handy. This won't work with versions older than 9, for instance.
+### Example Workflow File
 
-Install the dependencies  
-```bash
-$ npm install
-```
-
-Build the typescript and package it for distribution
-```bash
-$ npm run build && npm run package
-```
-
-Run the tests :heavy_check_mark:  
-```bash
-$ npm test
-
- PASS  ./index.test.js
-  ✓ throws invalid number (3ms)
-  ✓ wait 500 ms (504ms)
-  ✓ test runs (95ms)
-
-...
-```
-
-## Change action.yml
-
-The action.yml defines the inputs and output for your action.
-
-Update the action.yml with your name, description, inputs and outputs for your action.
-
-See the [documentation](https://help.github.com/en/articles/metadata-syntax-for-github-actions)
-
-## Change the Code
-
-Most toolkit and CI/CD operations involve async operations so the action is run in an async function.
-
-```javascript
-import * as core from '@actions/core';
-...
-
-async function run() {
-  try { 
-      ...
-  } 
-  catch (error) {
-    core.setFailed(error.message);
-  }
-}
-
-run()
-```
-
-See the [toolkit documentation](https://github.com/actions/toolkit/blob/master/README.md#packages) for the various packages.
-
-## Publish to a distribution branch
-
-Actions are run from GitHub repos so we will checkin the packed dist folder. 
-
-Then run [ncc](https://github.com/zeit/ncc) and push the results:
-```bash
-$ npm run package
-$ git add dist
-$ git commit -a -m "prod dependencies"
-$ git push origin releases/v1
-```
-
-Note: We recommend using the `--license` option for ncc, which will create a license file for all of the production node modules used in your project.
-
-Your action is now published! :rocket: 
-
-See the [versioning documentation](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md)
-
-## Validate
-
-You can now validate the action by referencing `./` in a workflow in your repo (see [test.yml](.github/workflows/test.yml))
+Updates readme and works on push / manually and creates pull-request. On push triggers only if there is a change on readme file.
 
 ```yaml
-uses: ./
-with:
-  milliseconds: 1000
+name: Reading Time Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.md'
+
+jobs:
+  calculate-reading-time:
+    runs-on: ubuntu-latest
+    name: Calculate Reading Time
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Calculate & Prepend Reading Time
+        uses: harunrst/reading-time-action@v1
+        with:
+          strategy: readme
+          text-style: default
+
+      # Example with paths strategy
+      # - name: Calculate & Prepend Reading Time
+      #   uses: harunrst/reading-time-action@v1
+      #   with:
+      #     strategy: paths
+      #     paths: docs|files
+      #     text-style: default
+
+      - name: Commit Changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: Edited markdown files with reading times.
+          push: false
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: Update markdown files with reading time.
+          body: Auto-generated Pull Request by [reading-time-action](https://github.com/harunrst/reading-time-action).
+          branch: reading-time-action
+
+      # Example Push Changes
+      # - name: Push changes
+      #   uses: ad-m/github-push-action@master
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: ${{ github.ref }}
 ```
 
-See the [actions tab](https://github.com/actions/typescript-action/actions) for runs of this action! :rocket:
+![](./assets/pull_request.jpeg)
 
-## Usage:
+### Example Repositories
 
-After testing you can [create a v1 tag](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md) to reference the stable and latest V1 action
+- [Progressium-API](https://github.com/harunrst/Progressium-Api)
+
+- [Essentials-of-Being-a-Software-Engineer](https://github.com/harunrst/Essentials-of-Being-a-Software-Engineer)
+
+- [github-books-template](https://github.com/harunrst/github-books-template)

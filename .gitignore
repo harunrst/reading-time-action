@@ -1,5 +1,6 @@
 # Dependency directory
 node_modules
+.vscode
 
 # Rest pulled from https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
@@ -95,5 +96,5 @@ typings/
 Thumbs.db
 
 # Ignore built ts files
-__tests__/runner/*
+tests/runner/*
 lib/**/*

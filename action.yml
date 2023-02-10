@@ -1,11 +1,22 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: Reading Time
+description: Calculate reading time of the md files in the repository.
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  strategy:
+    description: Select which files to update with reading time (all, paths, readme)
+    required: false
+    default: readme
+  paths:
+    description: Provide paths to look for when the strategy is "paths" (ie. docs|files)
+    required: false
+    default: .
+  text-style:
+    description: Text style (default, bold)
+    required: false
+    default: default
+  text-align:
+    description: Text align (left, center, right)
+    required: false
+    default: left
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: node16
+  main: dist/index.js
