@@ -1,3 +1,5 @@
+<p id="reading-time-action-id" align="left">2 min read</p>
+
 # GitHub Action to Calculate & Insert Reading Time
 
 <a href="https://github.com/harunrst/reading-time-action/actions"><img alt="typescript-action status" src="https://github.com/harunrst/reading-time-action/workflows/build-test/badge.svg"></a>
