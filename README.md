@@ -6,7 +6,7 @@
 
 Reading time action calculates medium-like reading times of markdown files in your repository and inserts them to the top of your markdown files.
 
-![](./assets/example.jpg)
+![](./assets/example_view.jpg)
 
 Moreover;
 
