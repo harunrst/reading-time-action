@@ -48,14 +48,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Calculate & Prepend Reading Time
-        uses: harunrst/reading-time-action
+        uses: harunrst/reading-time-action@v1.0
         with:
           strategy: readme
           text-style: default
 
       # Example with paths strategy
       # - name: Calculate & Prepend Reading Time
-      #   uses: harunrst/reading-time-action
+      #   uses: harunrst/reading-time-action@v1.0
       #   with:
       #     strategy: paths
       #     paths: docs|files
