@@ -1,5 +1,5 @@
 name: Reading Time
-description: Reading time action calculates medium-like reading times of markdown files in your repository and inserts them to the top of your markdown files.
+description: GitHub action to calculate medium-like reading times of markdown files and inserts to the top of the files.
 author: harunrst
 inputs:
   strategy:
