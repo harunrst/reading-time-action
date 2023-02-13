@@ -3,6 +3,7 @@
 # GitHub Action to Calculate & Insert Reading Time
 
 <a href="https://github.com/harunrst/reading-time-action/actions"><img alt="typescript-action status" src="https://github.com/harunrst/reading-time-action/workflows/build-test/badge.svg"></a>
+<a href="https://github.com/harunrst/reading-time-action/actions"><img alt="typescript-action status" src="https://github.com/harunrst/reading-time-action/workflows/check-dist/badge.svg"></a>
 
 Reading time action calculates medium-like reading times of markdown files in your repository and prepends them to the top of your markdown files.
 
