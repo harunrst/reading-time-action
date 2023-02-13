@@ -8,7 +8,7 @@ Reading time action calculates medium-like reading times of markdown files in yo
 
 ![](./assets/example_view.jpg)
 
-Moreover;
+You can;
 
 - Pick your calculation strategy: only readme file, specific paths, and all markdown files.
 - Pick your style: regular/bold text, align it to left/center/right.
@@ -23,10 +23,10 @@ All examples below are triggered only when you make a change on a markdown file.
 
 ## Inputs
 
-- strategy: `readme`(default), `paths`(requires 'paths' input), `all`
-- paths: i.e `docs`, `docs|src/marks`
-- text-style: `default`(default), `bold`
-- text-align: `left`(default), `center`, `right`
+- **strategy**: `readme`(default), `paths`(requires 'paths' input), `all`
+- **paths**: i.e `docs`, `docs|src/marks`
+- **text-style**: `default`(default), `bold`
+- **text-align**: `left`(default), `center`, `right`
 
 ### Example Workflow File
 
