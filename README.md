@@ -26,7 +26,7 @@ All examples below are triggered only when you make a change on a markdown file.
 Updates readme and works on push / manually and creates pull-request. On push triggers only if there is a change on readme file.
 
 ```yaml
-name: Reading Time Test
+name: Reading Time
 
 on:
   workflow_dispatch:
@@ -48,14 +48,14 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Calculate & Prepend Reading Time
-        uses: harunrst/reading-time-action@v1
+        uses: harunrst/reading-time-action
         with:
           strategy: readme
           text-style: default
 
       # Example with paths strategy
       # - name: Calculate & Prepend Reading Time
-      #   uses: harunrst/reading-time-action@v1
+      #   uses: harunrst/reading-time-action
       #   with:
       #     strategy: paths
       #     paths: docs|files
