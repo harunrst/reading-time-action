@@ -21,6 +21,13 @@ Moreover;
 
 All examples below are triggered only when you make a change on a markdown file. To trigger for the first time, I suggest you run manually using `workflow_dispatch`
 
+## Inputs
+
+- strategy: `readme`(default), `paths`(requires 'paths' input), `all`
+- paths: i.e `docs`, `docs|src/marks`
+- text-style: `default`(default), `bold`
+- text-align: `left`(default), `center`, `right`
+
 ### Example Workflow File
 
 Updates readme and works on push / manually and creates pull-request. On push triggers only if there is a change on readme file.
@@ -90,5 +97,3 @@ jobs:
 - [Progressium-API](https://github.com/harunrst/Progressium-Api)
 
 - [Essentials-of-Being-a-Software-Engineer](https://github.com/harunrst/Essentials-of-Being-a-Software-Engineer)
-
-- [github-books-template](https://github.com/harunrst/github-books-template)
